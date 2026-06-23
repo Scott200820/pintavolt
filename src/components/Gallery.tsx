@@ -154,17 +154,16 @@ const Gallery = ({ activeCategory, setActiveCategory, setView }: GalleryProps) =
                 onClick={() => setSelectedImage(work.image)}
               >
                 {work.image.endsWith('.mp4') ? (
-                  <div className="relative w-full h-full">
-                    <video 
-                      src={work.image} 
-                      preload="metadata" 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
-                      <div className="bg-secondary/90 text-primary p-4 rounded-full shadow-lg group-hover:scale-110 transition-transform duration-300">
-                        <Play className="w-6 h-6 fill-current" />
-                      </div>
+                  <div className="relative w-full h-full bg-slate-900/90 flex flex-col items-center justify-center p-6 rounded-2xl overflow-hidden group-hover:bg-slate-900/70 transition-all duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 to-accent/10 opacity-30"></div>
+                    
+                    <div className="bg-secondary/20 border border-secondary/40 text-secondary p-5 rounded-full shadow-lg group-hover:scale-110 group-hover:bg-secondary/30 transition-all duration-300 z-10 mb-4">
+                      <Play className="w-8 h-8 fill-current" />
                     </div>
+                    
+                    <span className="text-xs font-bold text-secondary uppercase tracking-wider z-10">
+                      Reproducir Video
+                    </span>
                   </div>
                 ) : (
                   <img 
