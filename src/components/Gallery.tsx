@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Maximize2, X, ArrowLeft } from 'lucide-react';
+import { Maximize2, X, ArrowLeft, Play } from 'lucide-react';
 
 interface GalleryProps {
   activeCategory: string;
@@ -65,7 +65,9 @@ const Gallery = ({ activeCategory, setActiveCategory, setView }: GalleryProps) =
     { id: 41, title: 'Mantenimiento de Filtro de Agua', category: 'Agua Purificada', image: '/gallery/Agua%20purificada/IMG-20200520-WA0028.jpg' },
     { id: 42, title: 'Equipamiento de Purificación Avanzada', category: 'Agua Purificada', image: '/gallery/Agua%20purificada/IMG-20200520-WA0032.jpg' },
     { id: 43, title: 'Instalación y Conexión Hidráulica', category: 'Agua Purificada', image: '/gallery/Agua%20purificada/IMG-20200520-WA0033.jpg' },
-    { id: 44, title: 'Agua Purificada Premium Residencial', category: 'Agua Purificada', image: '/gallery/Agua%20purificada/IMG-20200520-WA0039.jpg' }
+    { id: 44, title: 'Agua Purificada Premium Residencial', category: 'Agua Purificada', image: '/gallery/Agua%20purificada/IMG-20200520-WA0039.jpg' },
+    { id: 45, title: 'Proceso de Limpieza (Video 1)', category: 'Limpieza de Alfombra', image: '/gallery/Limpieza%20de%20alfombra/20200430_122656.mp4' },
+    { id: 46, title: 'Proceso de Limpieza (Video 2)', category: 'Limpieza de Alfombra', image: '/gallery/Limpieza%20de%20alfombra/20200526_141935.mp4' }
   ];
 
   const filteredWorks = activeCategory === 'Todos' 
@@ -151,11 +153,26 @@ const Gallery = ({ activeCategory, setActiveCategory, setView }: GalleryProps) =
                 className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-200 shadow-sm hover:shadow-xl transition-shadow cursor-pointer"
                 onClick={() => setSelectedImage(work.image)}
               >
-                <img 
-                  src={work.image} 
-                  alt={work.title} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
+                {work.image.endsWith('.mp4') ? (
+                  <div className="relative w-full h-full">
+                    <video 
+                      src={work.image} 
+                      preload="metadata" 
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
+                      <div className="bg-secondary/90 text-primary p-4 rounded-full shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <Play className="w-6 h-6 fill-current" />
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <img 
+                    src={work.image} 
+                    alt={work.title} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                   <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                     <span className="text-accent text-xs font-bold tracking-wider uppercase mb-1 block">
@@ -190,15 +207,28 @@ const Gallery = ({ activeCategory, setActiveCategory, setView }: GalleryProps) =
             >
                <X className="w-8 h-8" />
              </button>
-             <motion.img 
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
-              src={selectedImage} 
-              className="max-w-full max-h-[90vh] rounded-lg shadow-2xl" 
-              alt="Vista ampliada"
-              onClick={(e) => e.stopPropagation()}
-             />
+             {selectedImage.endsWith('.mp4') ? (
+               <motion.video 
+                initial={{ scale: 0.9 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0.9 }}
+                src={selectedImage} 
+                controls
+                autoPlay
+                className="max-w-full max-h-[90vh] rounded-lg shadow-2xl outline-none" 
+                onClick={(e) => e.stopPropagation()}
+               />
+             ) : (
+               <motion.img 
+                initial={{ scale: 0.9 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0.9 }}
+                src={selectedImage} 
+                className="max-w-full max-h-[90vh] rounded-lg shadow-2xl" 
+                alt="Vista ampliada"
+                onClick={(e) => e.stopPropagation()}
+               />
+             )}
           </motion.div>
         )}
       </AnimatePresence>
