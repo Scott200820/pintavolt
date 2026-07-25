@@ -65,9 +65,7 @@ const Gallery = ({ activeCategory, setActiveCategory, setView }: GalleryProps) =
     { id: 41, title: 'Mantenimiento de Filtro de Agua', category: 'Agua Purificada', image: '/gallery/Agua%20purificada/IMG-20200520-WA0028.jpg' },
     { id: 42, title: 'Equipamiento de Purificación Avanzada', category: 'Agua Purificada', image: '/gallery/Agua%20purificada/IMG-20200520-WA0032.jpg' },
     { id: 43, title: 'Instalación y Conexión Hidráulica', category: 'Agua Purificada', image: '/gallery/Agua%20purificada/IMG-20200520-WA0033.jpg' },
-    { id: 44, title: 'Agua Purificada Premium Residencial', category: 'Agua Purificada', image: '/gallery/Agua%20purificada/IMG-20200520-WA0039.jpg' },
-    { id: 45, title: 'Proceso de Limpieza (Video 1)', category: 'Limpieza de Alfombra', image: '/gallery/Limpieza%20de%20alfombra/20200430_122656.mp4' },
-    { id: 46, title: 'Proceso de Limpieza (Video 2)', category: 'Limpieza de Alfombra', image: '/gallery/Limpieza%20de%20alfombra/20200526_141935.mp4' }
+    { id: 44, title: 'Agua Purificada Premium Residencial', category: 'Agua Purificada', image: '/gallery/Agua%20purificada/IMG-20200520-WA0039.jpg' }
   ];
 
   const filteredWorks = activeCategory === 'Todos' 
@@ -186,6 +184,28 @@ const Gallery = ({ activeCategory, setActiveCategory, setView }: GalleryProps) =
               </motion.div>
             ))}
           </AnimatePresence>
+        </motion.div>
+
+        {/* Instagram Videos Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-16 bg-white/5 border border-white/10 rounded-3xl p-8 md:p-10 text-center max-w-4xl mx-auto backdrop-blur-md glow-border"
+        >
+          <h4 className="text-xl md:text-2xl font-bold text-white mb-3">¿Quieres ver nuestros procesos en video?</h4>
+          <p className="text-slate-300 mb-6 max-w-2xl mx-auto text-sm md:text-base">
+            Subimos videos de nuestros trabajos, antes y después de limpieza de alfombras, y procesos de pintura directamente a nuestro Instagram.
+          </p>
+          <a
+            href="https://www.instagram.com/pinta__volt/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-secondary hover:bg-accent text-primary px-8 py-3.5 rounded-xl font-bold transition-all duration-300 shadow-lg hover:shadow-secondary/20 hover:scale-105 cursor-pointer"
+          >
+            Ver videos en Instagram
+          </a>
         </motion.div>
 
       </div>
