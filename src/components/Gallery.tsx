@@ -94,8 +94,7 @@ const Gallery = ({ activeCategory, setActiveCategory, setView }: GalleryProps) =
         <motion.div 
           className="text-center max-w-3xl mx-auto mb-12"
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-secondary font-bold tracking-wide uppercase text-sm mb-2">Galería de Trabajos</h2>
@@ -111,8 +110,7 @@ const Gallery = ({ activeCategory, setActiveCategory, setView }: GalleryProps) =
         <motion.div 
           className="flex flex-wrap justify-center gap-2 mb-12"
           initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.2 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           {categories.map((category) => (
@@ -135,8 +133,7 @@ const Gallery = ({ activeCategory, setActiveCategory, setView }: GalleryProps) =
           layout 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.1 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <AnimatePresence>
@@ -189,8 +186,7 @@ const Gallery = ({ activeCategory, setActiveCategory, setView }: GalleryProps) =
         {/* Instagram Videos Banner */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-16 bg-white/5 border border-white/10 rounded-3xl p-8 md:p-10 text-center max-w-4xl mx-auto backdrop-blur-md glow-border"
         >
